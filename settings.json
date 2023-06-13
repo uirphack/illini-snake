@@ -1,0 +1,25 @@
+{
+    "game":{
+        "DISPLAY_NAME": "Snake",
+        "FPS": 60
+    },
+    "food":{
+        "WIDTH": 10,
+        "COLOR": [255,0,0]
+    },
+    "snake":{
+        "WIDTH": 18,
+        "COLOR": [255,255,255]
+    },
+    "screen":{
+        "LENGTH": 31,
+        "WIDTH":  21,
+        "SQUARE_WIDTH": 30,
+        "COLOR": [0,0,0],
+        "START_MENU":{
+            "FONT": "Consonlas",
+            "FONT_SIZE": 30,
+            "FONT_COLOR": [255,255,255]
+        }
+    }
+}
