@@ -62,8 +62,7 @@ class Game:
 
             # if we are past the main menu
             if self.playing:
-                self.snake.last_loop_direction = self.snake.direction
-
+                
                 # if enough time has passed for the snake to move
                 current_time = pygame.time.get_ticks()
                 if (current_time - self.loop_start_time) > (1000/self.snake.settings['SPEED']):

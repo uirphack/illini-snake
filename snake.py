@@ -8,14 +8,15 @@ class Snake( Base ):
     def __init__( self, game, settings ):
         Base.__init__( self, game, settings )
 
-        self.direction = None
         self.body = [ Square( int(self.game.screen.settings['LENGTH']/2), 
             int(self.game.screen.settings['WIDTH']/2) )
         ]
         
         self.nourishment_left = 0
         self.logo_image = utils.load_logo_file(  os.path.abspath( self.settings['HEAD_PATH'] ), self.settings['WIDTH'] )
-        self.last_loop_direction = None
+        
+        self.input_direction = None
+        self.direction = None
 
     def __len__( self ):
 
@@ -25,21 +26,22 @@ class Snake( Base ):
     def process_key_press( self, keys ):
         """process the keys pressed"""
 
-        if keys[pygame.K_LEFT]:
-            if self.last_loop_direction != 'right':
-                self.direction = 'left'
-        
-        if keys[pygame.K_RIGHT]:
-            if self.last_loop_direction != 'left':
-                self.direction = 'right'
+        if self.input_direction == None:
+            if keys[pygame.K_LEFT]:
+                if self.direction != 'right':
+                    self.input_direction = 'left'
+            
+            if keys[pygame.K_RIGHT]:
+                if self.direction != 'left':
+                    self.input_direction = 'right'
 
-        if keys[pygame.K_DOWN]:
-            if self.last_loop_direction != 'up':
-                self.direction = 'down'
-        
-        if keys[pygame.K_UP]:
-            if self.last_loop_direction != 'down':
-                self.direction = 'up'
+            if keys[pygame.K_DOWN]:
+                if self.direction != 'up':
+                    self.input_direction = 'down'
+            
+            if keys[pygame.K_UP]:
+                if self.direction != 'down':
+                    self.input_direction = 'up'
 
         if keys[pygame.K_z]: #exit entire program
             self.game.running = False
@@ -49,6 +51,9 @@ class Snake( Base ):
 
     def move( self ):
         
+        if self.input_direction != None:
+            self.direction = self.input_direction
+
         self._add_to_head()
         self._check_ate_food()
         self._check_remove_tail()
@@ -60,6 +65,8 @@ class Snake( Base ):
             self.game.playing = False
             return
 
+        self.input_direction = None
+        
     def _add_to_head( self ):
 
         """add another point to body in whatever direction snake is facing"""
