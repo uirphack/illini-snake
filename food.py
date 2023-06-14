@@ -1,6 +1,5 @@
 from base import Base
 from square import Square
-import numpy as np
 import random
 import pygame
 
@@ -36,7 +35,7 @@ class Food( Base ):
             choice = random.choice( possibilities )
             self.square = Square( choice[0], choice[1] )
         
-        self.logo_file = random.choice( self.game.logo_files )
+        self.logo_image = random.choice( self.game.logo_images )
 
     def draw( self ):
-        self.square.draw_image( self.logo_file, self.game.screen, self.settings['WIDTH'] )
+        self.square.draw_image( self.logo_image, self.game.screen, self.settings['WIDTH'] )

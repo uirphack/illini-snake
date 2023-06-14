@@ -2,6 +2,7 @@ from base import Base
 from square import Square
 import pygame
 import os
+import utils
 
 class Snake( Base ):
     def __init__( self, game, settings ):
@@ -13,7 +14,8 @@ class Snake( Base ):
         ]
         
         self.nourishment_left = 0
-        self.head_filepath = os.path.abspath( self.settings['HEAD_PATH'] )
+        self.logo_image = utils.load_logo_file(  os.path.abspath( self.settings['HEAD_PATH'] ), self.settings['WIDTH'] )
+        self.last_loop_direction = None
 
     def __len__( self ):
 
@@ -24,19 +26,19 @@ class Snake( Base ):
         """process the keys pressed"""
 
         if keys[pygame.K_LEFT]:
-            if self.direction != 'right':
+            if self.last_loop_direction != 'right':
                 self.direction = 'left'
         
         if keys[pygame.K_RIGHT]:
-            if self.direction != 'left':
+            if self.last_loop_direction != 'left':
                 self.direction = 'right'
 
         if keys[pygame.K_DOWN]:
-            if self.direction != 'up':
+            if self.last_loop_direction != 'up':
                 self.direction = 'down'
         
         if keys[pygame.K_UP]:
-            if self.direction != 'down':
+            if self.last_loop_direction != 'down':
                 self.direction = 'up'
 
         if keys[pygame.K_z]: #exit entire program
@@ -124,4 +126,4 @@ class Snake( Base ):
         for square in self.body:
             square.draw( self.game.screen, self.settings['COLOR'], self.settings['WIDTH'] )
 
-        self.body[0].draw_image( self.head_filepath, self.game.screen, self.settings['WIDTH'] )
+        self.body[0].draw_image( self.logo_image, self.game.screen, self.settings['WIDTH'] )

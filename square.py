@@ -45,20 +45,12 @@ class Square:
             box
         )
     
-    def draw_image( self, filepath, screen, width ):
+    def draw_image( self, img, screen, width ):
 
         pixel_center = self.get_pixel_center( screen )
         box = Square.get_pixel_box( pixel_center, width )
         top_left = box[0]
         
-        img = pygame.image.load( filepath )
-        r = img.get_rect()
-        h = r.height
-        w = r.width
-
-        # Scale
-        scaling = width/max(h,w)
-        img = pygame.transform.smoothscale_by( img, scaling )
         r = img.get_rect()
         h = r.height
         w = r.width
