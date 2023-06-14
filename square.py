@@ -58,7 +58,7 @@ class Square:
 
         # Scale
         scaling = width/max(h,w)
-        img = pygame.transform.scale_by( img, scaling )
+        img = pygame.transform.smoothscale_by( img, scaling )
         r = img.get_rect()
         h = r.height
         w = r.width
