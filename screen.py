@@ -25,15 +25,13 @@ class Screen( Base ):
                 self.food_options.append( [i,j] )
         
     def fill( self ):
-        
         """fill the entire screen with a background color"""
         self.pygame_screen.fill( self.settings['COLOR'] )
 
     def draw( self ):
-        
         if not self.game.playing:        
             Surface = self.main_menu_Font.render( 
-                'Press Enter to play', 
+                'Snake: press enter to play', 
                 None, 
                 self.settings['START_MENU']['FONT_COLOR']
             )
@@ -41,6 +39,8 @@ class Screen( Base ):
             self.pygame_screen.blit( Surface, ( int(x_centered), int(self.pixel_width/2) ) ) 
 
     def draw_score( self ):
+        """draw the score in the top left corner of the screen"""
+
         if self.game.playing:
             Surface = self.score_display_Font.render( 'Score: ' + str(self.game.get_score() ),None, self.settings['SCORE_DISPLAY']['FONT_COLOR'] )
             self.pygame_screen.blit( Surface, (5,5) ) 

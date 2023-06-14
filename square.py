@@ -22,7 +22,6 @@ class Square:
         return (self.x == other.x) and (self.y == other.y)
 
     def get_pixel_center( self, screen ):
-        
         """find the given pixel center of the square"""
         return np.array([
             screen.settings['SQUARE_WIDTH'] * (self.x + 0.5),
@@ -31,10 +30,13 @@ class Square:
 
     @staticmethod
     def get_pixel_box( pixel_center, width ):
+        """get the four coordinates for where to draw the square of given width"""
+
         width_offset = width * Square.OFFSET
         return pixel_center + width_offset
 
     def draw( self, screen, color, width ):
+        """draw a square with given width/color centered in its grid location"""
 
         pixel_center = self.get_pixel_center( screen )
         box = Square.get_pixel_box( pixel_center, width )
@@ -46,6 +48,7 @@ class Square:
         )
     
     def draw_image( self, img, screen, width ):
+        """draw a pre-scaled image centered a the grid location"""
 
         pixel_center = self.get_pixel_center( screen )
         box = Square.get_pixel_box( pixel_center, width )
