@@ -1,15 +1,18 @@
 {
     "game":{
         "DISPLAY_NAME": "Snake",
-        "FPS": 60
+        "FPS": 60,
+        "LOGOS_FOLDER": "opponent_logos"
     },
     "food":{
-        "WIDTH": 10,
-        "COLOR": [255,0,0]
+        "NOURISHMENT": 5,
+        "WIDTH": 45
     },
     "snake":{
-        "WIDTH": 18,
-        "COLOR": [255,255,255]
+        "WIDTH": 28,
+        "COLOR": [232,74,39],
+        "SPEED": 20,
+        "HEAD_PATH": "./Illinois.png"
     },
     "screen":{
         "LENGTH": 31,
@@ -19,6 +22,11 @@
         "START_MENU":{
             "FONT": "Consonlas",
             "FONT_SIZE": 30,
+            "FONT_COLOR": [255,255,255]
+        },
+        "SCORE_DISPLAY":{
+            "FONT": "Consonlas",
+            "FONT_SIZE": 12,
             "FONT_COLOR": [255,255,255]
         }
     }
