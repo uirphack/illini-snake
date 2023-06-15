@@ -59,6 +59,7 @@ class Snake( Base ):
 
     def move( self ):
         
+        # momentum direction can only be changed once per round, prevents snake from doing a 180 degree turn
         self.momentum_direction = self.direction
         
         self._add_to_head()
