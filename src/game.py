@@ -7,6 +7,7 @@ import os
 import pygame
 pygame.init()
 pygame.font.init()
+pygame.mixer.init()
 
 class Game:
     def __init__( self, all_settings ):

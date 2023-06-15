@@ -8,6 +8,7 @@ class Snake( Base ):
     def __init__( self, game, settings ):
         Base.__init__( self, game, settings )
 
+        # initialize the snake body with one square"
         self.body = [ Square( int(self.game.screen.settings['LENGTH']/2), 
             int(self.game.screen.settings['WIDTH']/2) )
         ]
@@ -17,6 +18,8 @@ class Snake( Base ):
         
         self.input_direction = None
         self.direction = None
+
+        self.eating_Sound = pygame.mixer.Sound(self.settings['EATING_SOUND_PATH']) 
 
     def __len__( self ):
 
@@ -120,7 +123,8 @@ class Snake( Base ):
             print ('nom nom nom')
             self.nourishment_left += self.game.food.settings['NOURISHMENT']
             self.game.food.get_square()
-            
+            pygame.mixer.Sound.play( self.eating_Sound )
+
     def _check_remove_tail( self ):
         
         if self.nourishment_left > 0:
