@@ -1,7 +1,6 @@
-from base import Base
-from square import Square
+from src.base import Base
+from src.square import Square
 import random
-import pygame
 
 class Food( Base ):
     def __init__( self, game, settings ):

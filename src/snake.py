@@ -1,8 +1,8 @@
-from base import Base
-from square import Square
+from src.base import Base
+from src.square import Square
+import src.utils as utils
 import pygame
 import os
-import utils
 
 class Snake( Base ):
     def __init__( self, game, settings ):

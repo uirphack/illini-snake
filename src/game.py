@@ -1,7 +1,7 @@
-from food import Food
-from snake import Snake
-from screen import Screen
-import utils
+from src.food import Food
+from src.snake import Snake
+from src.screen import Screen
+import src.utils as utils
 import os
 
 import pygame
@@ -24,10 +24,10 @@ class Game:
         return len(self.snake)
 
     def load_logo_images( self ):
-        filenames = os.listdir( './' + self.settings['LOGOS_FOLDER'] )
+        filenames = os.listdir( self.settings['LOGOS_PATH'] )
         self.logo_images = []
         for filename in filenames:
-            self.logo_images.append(utils.load_logo_file( os.path.abspath( os.path.join('.', self.settings['LOGOS_FOLDER'], filename ) ), self.all_settings['food']['WIDTH'] ))
+            self.logo_images.append(utils.load_logo_file( os.path.abspath( os.path.join(self.settings['LOGOS_PATH'],filename)), self.all_settings['food']['WIDTH'] )) 
 
     def play( self ):
 

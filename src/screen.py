@@ -1,4 +1,4 @@
-from base import Base
+from src.base import Base
 import pygame
 
 class Screen( Base ):
