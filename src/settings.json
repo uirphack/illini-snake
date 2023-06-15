@@ -6,7 +6,7 @@
     },
     "food":{
         "NOURISHMENT": 5,
-        "WIDTH": 45
+        "WIDTH": 40
     },
     "snake":{
         "WIDTH": 28,
@@ -27,7 +27,7 @@
         },
         "SCORE_DISPLAY":{
             "FONT": "Consonlas",
-            "FONT_SIZE": 12,
+            "FONT_SIZE": 20,
             "FONT_COLOR": [255,255,255]
         }
     }
