@@ -1,5 +1,7 @@
 # snake-demo
+Repository containing an Illini-themed snake game, written in Python using the PyGame library.
 
+![](src/static/Snake%20Gameplay%20Snippet.gif)
 
 # Video
 
