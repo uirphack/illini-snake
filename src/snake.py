@@ -5,21 +5,35 @@ import pygame
 import os
 
 class Snake( Base ):
+
+    KEY_DIRECTIONS = {
+        pygame.K_LEFT: "left",
+        pygame.K_RIGHT: "right",
+        pygame.K_UP: "up",
+        pygame.K_DOWN: "down"
+    }
+
+    OPPOSITE_DIRECTIONS = {
+        "left":"right",
+        "right":"left",
+        "up":"down",
+        "down":"up"
+    }
+    
     def __init__( self, game, settings ):
         Base.__init__( self, game, settings )
 
-        # initialize the snake body with one square"
+        # initialize the snake body with one square
         self.body = [ Square( int(self.game.screen.settings['LENGTH']/2), 
             int(self.game.screen.settings['WIDTH']/2) )
         ]
         
-        self.nourishment_left = 0
         self.logo_image = utils.load_logo_file(  os.path.abspath( self.settings['HEAD_PATH'] ), self.settings['WIDTH'] )
-        
-        self.input_direction = None
-        self.direction = None
-
         self.eating_Sound = pygame.mixer.Sound(self.settings['EATING_SOUND_PATH']) 
+
+        self.nourishment_left = 0
+
+        self.direction = None
 
     def __len__( self ):
 
@@ -29,47 +43,35 @@ class Snake( Base ):
     def process_key_press( self, keys ):
         """process the keys pressed"""
 
-        if self.input_direction == None:
-            if keys[pygame.K_LEFT]:
-                if self.direction != 'right':
-                    self.input_direction = 'left'
-            
-            if keys[pygame.K_RIGHT]:
-                if self.direction != 'left':
-                    self.input_direction = 'right'
-
-            if keys[pygame.K_DOWN]:
-                if self.direction != 'up':
-                    self.input_direction = 'down'
-            
-            if keys[pygame.K_UP]:
-                if self.direction != 'down':
-                    self.input_direction = 'up'
-
         if keys[pygame.K_z]: #exit entire program
             self.game.running = False
 
         if keys[pygame.K_r]: #restart game
             self.game.playing = False
 
+        for key in Snake.KEY_DIRECTIONS:
+            if keys[ key ]:
+                direction = Snake.KEY_DIRECTIONS[ key ]
+                opposite_direction = Snake.OPPOSITE_DIRECTIONS[ direction ]
+                
+                if opposite_direction != self.momentum_direction:
+                    self.direction = direction
+
     def move( self ):
         
-        if self.input_direction != None:
-            self.direction = self.input_direction
-
+        self.momentum_direction = self.direction
+        
         self._add_to_head()
         self._check_ate_food()
         self._check_remove_tail()
 
         if self._hit_boundaries():
-            self.game.playing = False
+            self.game.game_over()
             return
         if self._hit_self():
-            self.game.playing = False
+            self.game.game_over()
             return
 
-        self.input_direction = None
-        
     def _add_to_head( self ):
 
         """add another point to body in whatever direction snake is facing"""

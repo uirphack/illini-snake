@@ -83,3 +83,7 @@ class Game:
             self.clock.tick( self.settings['FPS'] )
             
         pygame.quit()  
+    
+    def game_over( self ):
+        self.playing = False
+        print ('Final score: ' + str(self.get_score()))
