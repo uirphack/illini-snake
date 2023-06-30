@@ -16,5 +16,8 @@ Watch the gameplay [here](https://youtu.be/pZuzKWZzt00).
 # How to Play
 Use arrow keys to move your Illini snake around. Eat the other big ten teams to grow your snake and increase your score. Watch out for the walls and don't run into yourself!
 
+# Developer Notes
+-- coming soon --
+
 # Author(s)
 James Kabbes - John Deere
