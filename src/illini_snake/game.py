@@ -6,6 +6,11 @@ class Game(Base):
 
     def __init__( self ):
         Base.__init__( self )
+
+        pygame.init()
+        pygame.font.init()
+        pygame.mixer.init()
+
         self.running = True
         self.loading_screen = True
         self.clock = pygame.time.Clock()
@@ -36,10 +41,6 @@ class Game(Base):
         self.food.get_square( self.screen, self.snake, self )
 
     def run( self ):
-
-        pygame.init()
-        pygame.font.init()
-        pygame.mixer.init()
 
         while self.running:
 
