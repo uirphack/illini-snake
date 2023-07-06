@@ -2,4 +2,5 @@ import sys
 sys.path.append( './src' )
 
 import illini_snake
-illini_snake.__main__()
+game = illini_snake.Game()
+game.run()
