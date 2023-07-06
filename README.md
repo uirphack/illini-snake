@@ -22,7 +22,7 @@ Watch the gameplay [here](https://youtu.be/pZuzKWZzt00).
 Use arrow keys to move your Illini snake around. Eat the other big ten teams to grow your snake and increase your score. Watch out for the walls and don't run into yourself!
 
 # Documentation
-Documentation is present on the repo's [GitHub Pages](https://uirpack.github.io/illini_snake)
+Documentation is present on the repo's [GitHub Pages](https://uirphack.github.io/illini_snake)
 
 # Author(s)
 James Kabbes - John Deere
