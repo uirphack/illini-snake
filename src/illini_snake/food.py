@@ -4,18 +4,26 @@ import random
 class Food(Base):
     def __init__( self ):
         Base.__init__( self )
-        self.get_square()
-    
-    def get_square( self, screen, snake ):
+        self.is_eaten = True
+
+    def get_square( self, screen, snake, game ):
+
+        """resets `logo_image` and `square` with randomly generated values"""
+
+        # reset is_eaten
+        self.is_eaten = False
+
+        # randomly choose a new logo
+        self.logo_image = random.choice( game.logo_images )
 
         #try randomly picking a spot the snake is not on
-        for i in range(0):
-            x = random.randint( 0, self.game.screen.settings['LENGTH']-1 )
-            y = random.randint( 0, self.game.screen.settings['WIDTH']-1 )
+        for i in range(3):
+            x = random.randint( 0, screen.LENGTH-1 )
+            y = random.randint( 0, screen.WIDTH-1 )
             self.square = Square( x, y )
 
             good_food = True
-            for square in self.game.snake.body:
+            for square in snake.body:
                 if self.square.is_collision( square ):
                     good_food = False
                     break
@@ -24,15 +32,14 @@ class Food(Base):
                 return
         
         # try every possibility
-        possibilities = self.game.screen.food_options.copy()
-        for square in self.game.snake.body:
+        possibilities = screen.food_options.copy()
+        for square in snake.body:
             possibilities.remove( [square.x, square.y] )
         
         if len(possibilities) > 0:
             choice = random.choice( possibilities )
             self.square = Square( choice[0], choice[1] )
-        
-        self.logo_image = random.choice( self.game.logo_images )
 
-    def draw( self ):
-        self.square.draw_image( self.logo_image, self.game.screen, self.settings['WIDTH'] )
+
+    def draw( self, screen ):
+        self.square.draw_image( self.logo_image, screen, self.settings['WIDTH'] )

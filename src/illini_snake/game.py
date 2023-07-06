@@ -14,7 +14,7 @@ class Game(Base):
         self.clock = pygame.time.Clock()
 
         self.screen = Screen()
-        self.load_logo_images()
+        self._load_logo_images()
 
     @property
     def score( self ):
@@ -25,13 +25,17 @@ class Game(Base):
         """returns the length of the snake, calling `game.score` runs this method"""
         return len(self.snake)
 
-    def load_logo_images( self ):
+    def _load_logo_images( self ):
         """preload all logo iamges"""
 
-        filenames = os.listdir( self.settings['LOGOS_PATH'] )
+        filenames = os.listdir( utils.get_full_path(self.LOGOS_PATH ) )
         self.logo_images = []
         for filename in filenames:
-            self.logo_images.append(utils.load_logo_file( os.path.abspath( os.path.join(self.settings['LOGOS_PATH'],filename)), self.all_settings['food']['WIDTH'] )) 
+            logo_path = utils.get_full_path( os.path.join(self.LOGOS_PATH, filename) )
+            self.logo_images.append(utils.load_logo_file( logo_path, settings['Food']['WIDTH'] )) 
+
+    def _make_new_food( self ):
+        self.food.get_square( self.screen, self.snake, self )
 
     def run( self ):
         """the main loop of the game"""
@@ -62,14 +66,17 @@ class Game(Base):
                         self.loop_start_time = pygame.time.get_ticks()
 
                         # initialize a new game!
-                        self.snake = Snake()
+                        self.snake = Snake( self.screen )
                         self.food = Food()
+                        self._make_new_food()
 
                 if not self.loading_screen:                
                     self.snake.process_key_press( keys )
                 
             self.screen.fill()
-            self.screen.draw()
+
+            if self.loading_screen:
+                self.screen.draw_loading_screen()
 
             if not self.loading_screen:
                 
@@ -79,12 +86,14 @@ class Game(Base):
                     self.loop_start_time = current_time
                 
                     # move the snake
-                    self.snake.move()
+                    self.snake.move( self.food, self.screen, self )
+                    if self.food.is_eaten:
+                        self._make_new_food()
 
-                self.snake.draw()
-                self.food.draw()
-                self.screen.draw_score()
-           
+                self.snake.draw( self.screen )
+                self.food.draw( self.screen )
+                self.screen.draw_score( self )
+
             # update the screen's display to show the changes
             self.screen.flip()
             self.clock.tick( self.settings['FPS'] )

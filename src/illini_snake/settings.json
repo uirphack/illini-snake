@@ -2,7 +2,7 @@
     "Game":{
         "DISPLAY_NAME": "Snake",
         "FPS": 60,
-        "LOGOS_PATH": "./static/opponent_logos"
+        "LOGOS_PATH": "static/opponent_logos"
     },
     "Food":{
         "NOURISHMENT": 5,
@@ -12,8 +12,8 @@
         "WIDTH": 28,
         "COLOR": [232,74,39],
         "SPEED": 20,
-        "HEAD_PATH": "./static/Illinois.png",
-        "EATING_SOUND_PATH": "./static/nom nom nom.wav"
+        "HEAD_PATH": "static/Illinois.png",
+        "EATING_SOUND_PATH": "static/nom nom nom.wav"
     },
     "Screen":{
         "LENGTH": 31,

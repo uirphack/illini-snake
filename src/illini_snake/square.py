@@ -21,11 +21,11 @@ class Square:
         """check if square is at the same location as another square"""
         return (self.x == other.x) and (self.y == other.y)
 
-    def get_pixel_center( self, screen ):
+    def _get_pixel_center( self, screen ):
         """find the given pixel center of the square"""
         return np.array([
-            screen.settings['SQUARE_WIDTH'] * (self.x + 0.5),
-            screen.settings['SQUARE_WIDTH'] * (self.y + 0.5)
+            screen.SQUARE_WIDTH * (self.x + 0.5),
+            screen.SQUARE_WIDTH * (self.y + 0.5)
         ])
 
     @staticmethod
@@ -38,7 +38,7 @@ class Square:
     def draw( self, screen, color, width ):
         """draw a square with given width/color centered in its grid location"""
 
-        pixel_center = self.get_pixel_center( screen )
+        pixel_center = self._get_pixel_center( screen )
         box = Square.get_pixel_box( pixel_center, width )
            
         pygame.draw.polygon( 
@@ -50,7 +50,7 @@ class Square:
     def draw_image( self, img, screen, width ):
         """draw a pre-scaled image centered a the grid location"""
 
-        pixel_center = self.get_pixel_center( screen )
+        pixel_center = self._get_pixel_center( screen )
         box = Square.get_pixel_box( pixel_center, width )
         top_left = box[0]
         
