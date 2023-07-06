@@ -1,10 +1,6 @@
 from illini_snake import Base, Food, Snake, Screen, utils, settings
 import os
-
 import pygame
-pygame.init()
-pygame.font.init()
-pygame.mixer.init()
 
 class Game(Base):
 
@@ -40,6 +36,10 @@ class Game(Base):
         self.food.get_square( self.screen, self.snake, self )
 
     def run( self ):
+
+        pygame.init()
+        pygame.font.init()
+        pygame.mixer.init()
 
         while self.running:
 
