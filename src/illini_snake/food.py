@@ -1,4 +1,4 @@
-from illini_snake import Base, Square, settings
+from illini_snake import Base, Square
 import random
 
 class Food(Base):
