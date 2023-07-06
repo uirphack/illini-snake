@@ -1,4 +1,4 @@
-# illini-snake
+# illini_snake
 Repository containing an Illini-themed snake game, written in Python using the PyGame library.
 
 ![](src/illini_snake/static/Gameplay.gif)
@@ -17,8 +17,7 @@ Watch the gameplay [here](https://youtu.be/pZuzKWZzt00).
 Use arrow keys to move your Illini snake around. Eat the other big ten teams to grow your snake and increase your score. Watch out for the walls and don't run into yourself!
 
 # Documentation
-Documentation is present on the repo's [GitHub Pages](https://jameskabbes.github.io/illini-snake)
--- coming soon --
+Documentation is present on the repo's [GitHub Pages](https://uirpack.github.io/illini-snake)
 
 # Author(s)
 James Kabbes - John Deere
