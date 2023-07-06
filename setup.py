@@ -7,7 +7,8 @@ if __name__ == '__main__':
             'static/opponent_logos/*.png',
             'static/opponent_logos/*.svg',
             'static/Illinois.png',
-            'static/nom nom nom.wav'
+            'static/nom nom nom.wav',
+            'settings.json'
         ]
         }
     )
