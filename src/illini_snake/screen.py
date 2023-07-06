@@ -1,10 +1,9 @@
-from src.base import Base
+from illini_snake import Base
 import pygame
 
 class Screen( Base ):
-    def __init__( self, game, settings ):
-        Base.__init__( self, game, settings )
-        
+    def __init__( self):
+        Base.__init__( self )
         self.pixel_length = self.settings['LENGTH'] * self.settings['SQUARE_WIDTH']
         self.pixel_width = self.settings['WIDTH'] * self.settings['SQUARE_WIDTH']
         
@@ -41,9 +40,8 @@ class Screen( Base ):
     def draw_score( self ):
         """draw the score in the top left corner of the screen"""
 
-        if self.game.playing:
-            Surface = self.score_display_Font.render( 'Score: ' + str(self.game.get_score() ),None, self.settings['SCORE_DISPLAY']['FONT_COLOR'] )
-            self.pygame_screen.blit( Surface, (5,5) ) 
+        Surface = self.score_display_Font.render( 'Score: ' + str(self.game.get_score() ),None, self.settings['SCORE_DISPLAY']['FONT_COLOR'] )
+        self.pygame_screen.blit( Surface, (5,5) ) 
 
     def flip( self ):
         pygame.display.flip()

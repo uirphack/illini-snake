@@ -1,14 +1,12 @@
-from src.base import Base
-from src.square import Square
+from illini_snake import Base, Square, settings
 import random
 
-class Food( Base ):
-    def __init__( self, game, settings ):
-        Base.__init__( self, game, settings )
-
+class Food(Base):
+    def __init__( self ):
+        Base.__init__( self )
         self.get_square()
     
-    def get_square( self ):
+    def get_square( self, screen, snake ):
 
         #try randomly picking a spot the snake is not on
         for i in range(0):

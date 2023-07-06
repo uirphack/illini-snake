@@ -1,6 +1,4 @@
-from src.base import Base
-from src.square import Square
-import src.utils as utils
+from illini_snake import Base, Square, utils
 import pygame
 import os
 
@@ -20,8 +18,8 @@ class Snake( Base ):
         "down":"up"
     }
     
-    def __init__( self, game, settings ):
-        Base.__init__( self, game, settings )
+    def __init__( self ):
+        Base.__init__( self )
 
         # initialize the snake body with one square
         self.body = [ Square( int(self.game.screen.settings['LENGTH']/2), 
@@ -42,12 +40,6 @@ class Snake( Base ):
 
     def process_key_press( self, keys ):
         """process the keys pressed"""
-
-        if keys[pygame.K_z]: #exit entire program
-            self.game.running = False
-
-        if keys[pygame.K_r]: #restart game
-            self.game.playing = False
 
         for key in Snake.KEY_DIRECTIONS:
             if keys[ key ]:
