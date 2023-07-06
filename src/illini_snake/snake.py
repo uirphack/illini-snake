@@ -1,6 +1,5 @@
 from illini_snake import Base, Square, utils
 import pygame
-import os
 
 class Snake( Base ):
 
@@ -21,7 +20,7 @@ class Snake( Base ):
     def __init__( self, screen ):
         Base.__init__( self )
 
-        # initialize the snake body with one square
+        # initialize the snake body list with one square
         self.body = [ Square( int(screen.LENGTH/2), int(screen.WIDTH/2) ) ]
         
         self.logo_image = utils.load_logo_file( utils.get_full_path(self.HEAD_PATH), self.WIDTH )
@@ -31,7 +30,6 @@ class Snake( Base ):
         self.direction = None
 
     def __len__( self ):
-
         """overrides len() operator"""
         return len(self.body)
 
@@ -43,12 +41,13 @@ class Snake( Base ):
                 direction = Snake.KEY_DIRECTIONS[ key ]
                 opposite_direction = Snake.OPPOSITE_DIRECTIONS[ direction ]
                 
+                # change the snakes direction, as long it isn't trying to turn itself around 180 degrees
                 if opposite_direction != self.momentum_direction:
                     self.direction = direction
 
     def move( self, food, screen, game ):
         
-        # momentum direction can only be changed once per round, prevents snake from doing a 180 degree turn
+        # momentum direction can only be changed once per round, prevents snake from changing multiple times per loop
         self.momentum_direction = self.direction
         
         self._add_to_head()

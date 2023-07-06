@@ -7,6 +7,7 @@ pygame.font.init()
 pygame.mixer.init()
 
 class Game(Base):
+
     def __init__( self ):
         Base.__init__( self )
         self.running = True
@@ -35,10 +36,10 @@ class Game(Base):
             self.logo_images.append(utils.load_logo_file( logo_path, settings['Food']['WIDTH'] )) 
 
     def _make_new_food( self ):
+        """Generate a new location for the food to go"""
         self.food.get_square( self.screen, self.snake, self )
 
     def run( self ):
-        """the main loop of the game"""
 
         while self.running:
 

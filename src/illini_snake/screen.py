@@ -2,6 +2,7 @@ from illini_snake import Base
 import pygame
 
 class Screen( Base ):
+    
     def __init__( self):
         Base.__init__( self )
         
@@ -26,6 +27,7 @@ class Screen( Base ):
         
     def fill( self ):
         """fill the entire screen with a background color"""
+        
         self.pygame_screen.fill( self.COLOR )
 
     def draw_loading_screen( self ):

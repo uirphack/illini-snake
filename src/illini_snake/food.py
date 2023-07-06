@@ -2,18 +2,15 @@ from illini_snake import Base, Square, settings
 import random
 
 class Food(Base):
+    
     def __init__( self ):
         Base.__init__( self )
         self.is_eaten = True
 
     def get_square( self, screen, snake, game ):
-
         """resets `logo_image` and `square` with randomly generated values"""
 
-        # reset is_eaten
         self.is_eaten = False
-
-        # randomly choose a new logo
         self.logo_image = random.choice( game.logo_images )
 
         #try randomly picking a spot the snake is not on
@@ -31,7 +28,7 @@ class Food(Base):
             if good_food:
                 return
         
-        # try every possibility
+        #otherwise, try every possibility
         possibilities = screen.food_options.copy()
         for square in snake.body:
             possibilities.remove( [square.x, square.y] )
