@@ -10,4 +10,4 @@ from .snake import Snake
 from .screen import Screen
 from . import utils
 from .game import Game
-
+from . import __main__
