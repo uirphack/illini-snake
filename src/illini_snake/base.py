@@ -1,6 +1,9 @@
 from illini_snake import settings
 
 class Base:
+    
+    """Object that reads information from settings and sets the instances key attributes"""
+    
     def __init__( self ):
         key = self.__class__.__name__   #Food, Game, Screen, etc.
         self.settings = settings[ key ]
