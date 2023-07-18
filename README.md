@@ -6,6 +6,8 @@ Repository containing an Illini-themed snake game, written in Python using the P
 # YouTube Video
 Watch the gameplay [here](https://youtu.be/pZuzKWZzt00).
 
+*James's note*: This YouTube Video does not satisfy all requirements for the Hackathon Video. 
+
 # Repo Setup
 
 ## Install locally
